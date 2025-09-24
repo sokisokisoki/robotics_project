@@ -31,7 +31,7 @@ def fk_Dofbot (q):
     R01 = rotz(q[0]) # rotation between base frame and 1 frame
     R12 = roty(-q[1]) # rotation between 1 and 2 frames
     R23 = roty(-q[2]) # rotation between 2 and 3 frames
-    R34 = roty(-q(3)) # rotation between 3 and 4 frames
+    R34 = roty(-q[3]) # rotation between 3 and 4 frames
     R45 = rotx(-q[4]) # rotation between 4 and 5 frames
     R5T = roty(0) #the tool frame is defined to be the same as frame 5
 
