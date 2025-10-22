@@ -79,7 +79,11 @@ def rotz(theta):
     Rz = R.from_euler('z',theta , degrees = True )
     return Rz
 
-Rot_c, Pot_c = fk_Dofbot(np.array([29.77096019, 45.38246186, 79.48546435, 25.30576397, 39.60057099]))
+Rot_c1, Pot_c1 = fk_Dofbot(np.array([29.77096019, 45.38246186, 79.48546435, 25.30576397, 39.60057099]))
+Rot_c2, Pot_c2 = fk_Dofbot(np.array([28.53074308, 51.02583581, 67.33612552, 32.83787937, 39.27316848]))
+Rot_c3, Pot_c3 = fk_Dofbot(np.array([29.85846237, 54.84743611, 67.05128049, 30.43932417, 38.63134454]))
+Rot_c4, Pot_c4 = fk_Dofbot(np.array([33.36583245, 70.82181866, 50.42047797, 36.17143329, 45.16341571]))
+Rot_c5, Pot_c5 = fk_Dofbot(np.array([33.53834327, 49.48473221, 58.26814182, 50.13784275, 44.92978221]))
 
-print("Rotation matrix:\n", Rot_c.as_matrix())
-print("Position vector:\n", Pot_c)
+print("Rotation matrix:\n", Rot_c5.as_matrix())
+print("Position vector:\n", Pot_c5)
