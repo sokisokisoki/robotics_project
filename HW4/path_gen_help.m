@@ -23,13 +23,19 @@ xlabel('$\lambda$','Interpreter','latex');  %the $ and interpreter argument let 
 ylabel('$q(\lambda)$ (degrees)','Interpreter','latex');
 lg = legend('1','2','3','4','5');  %use legend to label your plots
 title(lg,'Joint'); %this adds a title to your legend. it can be useful for cases like this rather than writing joint 1, joint 2, etc and cluttering the legend
+title('Joint Angles');
 
 %plot the Euler angle representation of EE orientation
-figure;plot(lambda,eulerot,'LineWidth',2);
-
+figure; plot(lambda,eulerot,'LineWidth',2);
+xlabel('$\lambda$', 'Interpreter', 'latex');
+ylabel('Euler Angles (degrees)', 'Interpreter', 'latex');
+title('Euler Angle Representation');
 
 %plot the EE position
-figure;plot(lambda,Pot,'LineWidth',2);
+figure; plot(lambda,Pot,'LineWidth',2);
+xlabel('$\lambda$', 'Interpreter', 'latex');
+ylabel('Position (m)', 'Interpreter', 'latex');
+title('EE Position');
 
 %visual the start and end poses. Be sure to label the ***figures*** using **title**
 dofbot = defineDofbotPoE();
