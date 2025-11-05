@@ -29,12 +29,14 @@ title('Joint Angles');
 figure; plot(lambda,eulerot,'LineWidth',2);
 xlabel('$\lambda$', 'Interpreter', 'latex');
 ylabel('Euler Angles (degrees)', 'Interpreter', 'latex');
+lg = legend('Z','Y','X');
 title('Euler Angle Representation');
 
 %plot the EE position
 figure; plot(lambda,Pot,'LineWidth',2);
 xlabel('$\lambda$', 'Interpreter', 'latex');
 ylabel('Position (m)', 'Interpreter', 'latex');
+lg = legend('X','Y','Z');
 title('EE Position');
 
 %visual the start and end poses. Be sure to label the ***figures*** using **title**
