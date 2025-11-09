@@ -80,9 +80,20 @@ def rotz(theta):
     return Rz
 
 Rot_1e, Pot_1e = fk_Dofbot(np.array([30, 45, 60, 15, 90]))       # Expected
-Rot_1m, Pot_1m = fk_Dofbot(np.array([29, 44, 60, 15, 89]))       # Measured 
+Rot_1m, Pot_1m = fk_Dofbot(np.array([30, 44, 60, 16, 89]))       # Measured 
 
-print("Test Case 1:")
+Rot_2e, Pot_2e = fk_Dofbot(np.array([30, 160, 20, 0, 0]))
+Rot_2m, Pot_2m = fk_Dofbot(np.array([30, 161, 20, 1, 0]))
+
+Rot_3e, Pot_3e = fk_Dofbot(np.array([0, 130, 10, 0, 0]))
+Rot_3m, Pot_3m = fk_Dofbot(np.array([0, 130, 10, 1, 0]))
+
+Rot_4e, Pot_4e = fk_Dofbot(np.array([30, 45, 60, 15, 90]))
+Rot_4e, Pot_4e = fk_Dofbot(np.array([29, 44, 60, 15, 90]))
+
+Rot_star_e, Pot_star_e = fk_Dofbot(np.array([30, 45, 60, 15, 90]))
+Rot_star_e, Pot_star_e = fk_Dofbot(np.array([30, 45, 60, 15, 89]))
+
 print("Rotation matrix expected:\n", Rot_1e.as_matrix())
 print("Position vector expected:\n", Pot_1e)
 
