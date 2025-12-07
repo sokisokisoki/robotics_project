@@ -1,0 +1,8 @@
+String Direction Analysis
+=======================
+Image: weird.jpg
+Entry edge: right
+Entry point: 2248.0, 1522.0
+Recommended angle: 236.4°
+Direction vector: [-0.9848, 0.1739]
+Cardinal direction: Southwest
