@@ -129,13 +129,13 @@ if __name__ == "__main__":
         
         print("Detected pixel (u,v):", (u,v))
 
+        # bang-bang control for joint 1
         if u < w // 2 - 50:
             new_joint_angle = min(q[0] + 3, 180)
             moveJoint(1, new_joint_angle, 200)
         elif u > w // 2 + 50:
             new_joint_angle = max(q[0] - 3, 0)
             moveJoint(1, new_joint_angle, 200)
-
 
         key = cv2.waitKey(1) & 0xff
 
