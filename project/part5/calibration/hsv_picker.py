@@ -4,11 +4,9 @@ import numpy as np
 def nothing(x):
     pass
 
-# Create a black image, a window
 img = np.zeros((300, 512, 3), np.uint8)
 cv2.namedWindow("Trackbars")
 
-# Create trackbars for color change
 cv2.createTrackbar("H Min", "Trackbars", 0, 179, nothing)
 cv2.createTrackbar("S Min", "Trackbars", 0, 255, nothing)
 cv2.createTrackbar("V Min", "Trackbars", 0, 255, nothing)
@@ -16,7 +14,6 @@ cv2.createTrackbar("H Max", "Trackbars", 179, 179, nothing)
 cv2.createTrackbar("S Max", "Trackbars", 255, 255, nothing)
 cv2.createTrackbar("V Max", "Trackbars", 255, 255, nothing)
 
-# Load an image (replace 'your_image.jpg' with your image path)
 image = cv2.imread("/home/group2/Desktop/Projects/orange_string.png")
 if image is None:
     print("not read")
