@@ -1,6 +1,12 @@
-import time #import the time module. Used for adding pauses during operation
-from Arm_Lib import Arm_Device #import the module associated with the arm
+import time
+import numpy as np
 
+from Arm_Lib import Arm_Device
+
+Arm = Arm_Device()
+time.sleep(2)
+
+# Fixed path for arm to follow, determined by hand
 q_l = [
     [180.0, 45.0, 60.0, 50.0, 0.0, 0.0],
     [135.0, 50.0, 60.0, 25.0, 0.0, 180.0],
@@ -15,10 +21,7 @@ q_l = [
     [60.0, 60.0, 60.0, 35.0, 0.0, 180.0],
 ]
 
-Arm = Arm_Device() # Get DOFBOT object
-time.sleep(2) #this pauses execution for the given number of seconds
-
-def main(): #define the main program function
+def main():
     speedtime = 1000 #time in milliseconds to reach desired joint position
     
     q = q_l
@@ -28,7 +31,7 @@ def main(): #define the main program function
             moveJoint(jnum + 1,ang,speedtime)
             time.sleep(0.5)
         time.sleep(0.5)
-    q = readAllActualJointAngles() # read the current position of all joints
+    q = readAllActualJointAngles()
     print(q)
     
     print("Program Ended")
@@ -70,6 +73,7 @@ def getJointAngle(jnum):
                 if ang>=0 and ang<=270:
                     break
     return ang #return the read value to the main function
+
 def moveJoint(jnum,ang,speedtime):
     """
     function used to move the specified joint to the given position
@@ -79,6 +83,7 @@ def moveJoint(jnum,ang,speedtime):
     # call the function to move joint number jnum to ang degrees in speedtime milliseconds
     Arm.Arm_serial_servo_write(jnum,ang,speedtime)
     return
+
 def readActualJointAngle(jnum):
     """
     function used to read the position of the specified joint
@@ -88,23 +93,31 @@ def readActualJointAngle(jnum):
     # call the function to read the position of joint number jnum
     ang = Arm.Arm_serial_servo_read(jnum)
     return ang
-#this cell provides two versions of a function to read all joint angles
-import numpy as np #import module numpy, assign new name for module (np) for readability
 
-# function to read and return all joint angles
-# returns joint angles as a 1x6 numpy array
 def readAllActualJointAngles():
-    q = np.array([Arm.Arm_serial_servo_read(1),Arm.Arm_serial_servo_read(2),Arm.Arm_serial_servo_read(3),Arm.Arm_serial_servo_read(4),Arm.Arm_serial_servo_read(5),Arm.Arm_serial_servo_read(6)])
+    """
+    # function to read and return all joint angles
+    # returns joint angles as a 1x6 numpy array
+    """
+    q = np.array([Arm.Arm_serial_servo_read(1),
+                  Arm.Arm_serial_servo_read(2),
+                  Arm.Arm_serial_servo_read(3),
+                  Arm.Arm_serial_servo_read(4),
+                  Arm.Arm_serial_servo_read(5),
+                  Arm.Arm_serial_servo_read(6)])
     return q
 
-# second version of function to read and return all joint angles
-# returns joint angles as a 6x1 numpy array
 def readAllActualJointAngles2():    
+    """
+    # second version of function to read and return all joint angles
+    # returns joint angles as a 6x1 numpy array
+    """
     q = np.zeros((6,1)) #set up a 6x1 array placeholder
     for i in range(1,7): #loop through each joint (Note range(1,N) = 1,2,...,N-1)
         #note in Python the array indexing starts at 0 (the reason for i-1 index for q)
         q[i-1] = Arm.Arm_serial_servo_read(i) #store read angle into corresponding index of q
     return q
+
 #execute the main loop unless the stop button is pressed to stop the kernel 
 try:
     main()
