@@ -150,14 +150,20 @@ if __name__ == "__main__":
         print("Detected pixel (u,v), wait_count:", (u,v), wait_count)
 
         # bang-bang control for joint 1
-        if u < w // 2 - 50:
+        if u < w // 2 - 25:
             new_joint_angle = min(q[0] + 3, 180)
             moveJoint(1, new_joint_angle, 200)
-            wait_count = 0
-        elif u > w // 2 + 50:
+        elif u > w // 2 + 25:
             new_joint_angle = max(q[0] - 3, 0)
             moveJoint(1, new_joint_angle, 200)
-            wait_count = 0
+
+        # bang-bang control for joint 4
+        if v < h // 2 - 25:
+            new_joint_angle = min(q[3] + 3, 180)
+            moveJoint(4, new_joint_angle, 200)
+        elif v > h // 2 + 25:
+            new_joint_angle = max(q[3] - 3, 0)
+            moveJoint(4, new_joint_angle, 200)
             
         if wait_count > 30:
             q = q_l

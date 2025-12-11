@@ -110,13 +110,18 @@ if __name__ == "__main__":
 
             frame = cv2.undistort(frame, camera_matrix, distortion_coeffs, None, new_camera_matrix)
 
-            hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+            hsv_frame = cv2.cvtColor(frame, 
+                                     cv2.COLOR_BGR2HSV)
 
             lower_orange = np.array([0, 98, 192])
             upper_orange = np.array([179, 255, 255])
-            mask = cv2.inRange(hsv_frame, lower_orange, upper_orange)
+            mask = cv2.inRange(hsv_frame, 
+                               lower_orange, 
+                               upper_orange)
             
-            countours, _ = cv2.findContours(mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+            countours, _ = cv2.findContours(mask, 
+                                            cv2.RETR_EXTERNAL, 
+                                            cv2.CHAIN_APPROX_SIMPLE)
             
             u = None
             v = None

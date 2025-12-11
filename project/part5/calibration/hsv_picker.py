@@ -14,7 +14,7 @@ cv2.createTrackbar("H Max", "Trackbars", 179, 179, nothing)
 cv2.createTrackbar("S Max", "Trackbars", 255, 255, nothing)
 cv2.createTrackbar("V Max", "Trackbars", 255, 255, nothing)
 
-image = cv2.imread("/home/group2/Desktop/Projects/orange_string.png")
+image = cv2.imread("orange_string.png")
 if image is None:
     print("not read")
 hsv_image = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
