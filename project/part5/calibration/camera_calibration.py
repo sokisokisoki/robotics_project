@@ -52,7 +52,7 @@ while True:
 cam.release()
 cv2.destroyAllWindows()
 
-if len(objpoints) < 5:
+if len(objpoints) < 10:
     print("Not enough calibration images captured.")
     exit()
 
